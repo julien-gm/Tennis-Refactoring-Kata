@@ -14,4 +14,5 @@ jobs:
 
       - name: test
         run: |
+          pip install pytest
           python -m pytest *test.py
