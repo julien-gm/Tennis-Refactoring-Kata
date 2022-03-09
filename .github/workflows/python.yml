@@ -1,7 +1,7 @@
-name: Lint
+name: Validate
 on: [push, pull_request]
 jobs:
-  lint:
+  validate:
     name: Validate
     runs-on: ubuntu-latest
     steps:
