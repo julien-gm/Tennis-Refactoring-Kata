@@ -64,13 +64,13 @@ class TennisGame2:
     def score(self):
         if (self.p1points == self.p2points):
             if (self.p1points==0):
-                result = "Love All"
+                result = "Love-All"
             elif (self.p1points==1):
-                result = "Fifteen All"
+                result = "Fifteen-All"
             elif (self.p1points==2):
-                result = "Thirty All"
+                result = "Thirty-All"
             else:
-                result = "Deuce All"
+                result = "Deuce"
         else:
             if (self.p1points==1):
                 P1res ="Fifteen"
