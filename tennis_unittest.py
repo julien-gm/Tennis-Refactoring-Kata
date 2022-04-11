@@ -2,7 +2,7 @@
 
 import unittest
 
-from tennis import TennisGame1, TennisGame2, TennisGame3
+from tennis import TennisGame4
 
 test_cases = [
     (0, 0, "Love-All", 'player1', 'player2'),
@@ -64,22 +64,28 @@ def play_game(TennisGame, p1Points, p2Points, p1Name, p2Name):
 
 class TestTennis(unittest.TestCase):
      
-    def test_Score_Game1(self):
-        for testcase in test_cases:
-            (p1Points, p2Points, score, p1Name, p2Name) = testcase
-            game = play_game(TennisGame1, p1Points, p2Points, p1Name, p2Name)
-            self.assertEqual(score, game.score())
+    # def test_Score_Game1(self):
+    #     for testcase in test_cases:
+    #         (p1Points, p2Points, score, p1Name, p2Name) = testcase
+    #         game = play_game(TennisGame1, p1Points, p2Points, p1Name, p2Name)
+    #         self.assertEqual(score, game.score())
 
-    def test_Score_Game2(self):
-        for testcase in test_cases:
-            (p1Points, p2Points, score, p1Name, p2Name) = testcase
-            game = play_game(TennisGame2, p1Points, p2Points, p1Name, p2Name)
-            self.assertEqual(score, game.score())
+    # def test_Score_Game2(self):
+    #     for testcase in test_cases:
+    #         (p1Points, p2Points, score, p1Name, p2Name) = testcase
+    #         game = play_game(TennisGame2, p1Points, p2Points, p1Name, p2Name)
+    #         self.assertEqual(score, game.score())
 
-    def test_Score_Game3(self):
+    # def test_Score_Game3(self):
+    #     for testcase in test_cases:
+    #         (p1Points, p2Points, score, p1Name, p2Name) = testcase
+    #         game = play_game(TennisGame3, p1Points, p2Points, p1Name, p2Name)
+    #         self.assertEqual(score, game.score())
+            
+    def test_Score_Game4(self):
         for testcase in test_cases:
-            (p1Points, p2Points, score, p1Name, p2Name) = testcase
-            game = play_game(TennisGame3, p1Points, p2Points, p1Name, p2Name)
+            (p1points, p2points, score, p1Name, p2Name) = testcase
+            game = play_game(TennisGame4, p1points, p2points, p1Name, p2Name)
             self.assertEqual(score, game.score())
  
 if __name__ == "__main__":
