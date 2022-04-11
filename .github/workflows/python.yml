@@ -16,3 +16,8 @@ jobs:
         run: |
           pip install pytest
           python -m pytest *test.py
+
+      - name: lint
+        run: |
+          pip install flake8
+          python -m flake8 *.py
