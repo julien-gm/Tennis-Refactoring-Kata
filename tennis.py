@@ -177,7 +177,7 @@ class TennisGame3:
                 return "Deuce"
             point = self.p1N if self.p1 > self.p2 else self.p2N
             return (
-                 "Advantage " + point
-                 if ((self.p1 - self.p2) * (self.p1 - self.p2) == 1)
-                 else "Win for " + point
+                "Advantage " + player_name
+                if ((self.p1 - self.p2) * (self.p1 - self.p2) == 1)
+                else "Win for " + player_name
             )
