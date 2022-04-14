@@ -14,7 +14,8 @@ class TennisGame:
         self.set_win = False
 
     def won_point(self, playerName):
-        if self.set_win: raise Exception('Game is over')
+        if self.set_win: 
+            raise Exception('Game is over')
         else:    
             if playerName != self.player1.name and playerName != self.player2.name:
                 raise Exception(playerName + " is not playing")
