@@ -18,7 +18,7 @@ class TennisGame:
         if playerName == self.player2.name:
             self.player2.points += 1
         else:
-            print(playerName+"is not playing")
+            print(playerName+"is not playing !")
 
 
     def score(self):
