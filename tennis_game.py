@@ -6,12 +6,17 @@ class TennisGame:
     def __init__(self, player1_name, player2_name):
         self.player1 = Player(player1_name)
         self.player2 = Player(player2_name)
+        self.in_progress = True
 
     def won_point(self, player_name):
+        if not self.in_progress:
+            raise Exception("Game is over")
         if player_name == self.player1.name:
             self.player1.score += 1
-        else:
+        if player_name == self.player2.name:
             self.player2.score += 1
+        else:
+            raise Exception(player_name + " is not playing")
 
     def score(self):
         if (self.player1.score < 4 and self.player2.score < 4) and (
