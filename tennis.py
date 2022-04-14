@@ -22,6 +22,10 @@ class TennisGame:
 
     def score(self):
         if (self.player1.points < 4 and self.player2.points < 4) and (
+            self.player1.points + self.player2.points > 6
+        ):
+            raise Exception("Game is over")
+        if (self.player1.points < 4 and self.player2.points < 4) and (
             self.player1.points + self.player2.points < 6
         ):
             points = ["Love", "Fifteen", "Thirty", "Forty"]
