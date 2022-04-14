@@ -11,16 +11,21 @@ class TennisGame:
     def __init__(self, player1Name, player2Name):
         self.player1 = Player(player1Name)
         self.player2 = Player(player2Name)
+        self.set_win = False
 
     def won_point(self, playerName):
-        ### Exception Raised ###
-        if playerName != self.player1.name and playerName != self.player2.name:
-            raise Exception(playerName + " is not playing")
-        ### ---------------- ###    
-        elif playerName == self.player1.name:
-            self.player1.points += 1
-        else:
-            self.player2.points += 1
+        if self.set_win == True:
+            raise Exception('Game is over')
+        else:    
+            ### Exception Raised ###
+            if playerName != self.player1.name and playerName != self.player2.name:
+                raise Exception(playerName + " is not playing")
+            ### ---------------- ###  
+            elif playerName == self.player1.name:
+                self.player1.points += 1
+            else:
+                self.player2.points += 1
+
 
     def score(self):
         if (self.player1.points < 4 and self.player2.points < 4) and (
@@ -41,12 +46,20 @@ class TennisGame:
                 if self.player1.points > self.player2.points
                 else self.player2.name
             )
-            return (
-                "Advantage " + score
-                if (
-                    (self.player1.points - self.player2.points)
-                    * (self.player1.points - self.player2.points)
-                    == 1
-                )
-                else "Win for " + score
-            )
+            if ((self.player1.points - self.player2.points) * (self.player1.points - self.player2.points) == 1):
+                return "Advantage " + score
+            else:
+                self.set_win = True
+                return "Win for " + score
+            
+
+            # return (
+            #     "Advantage " + score
+            #     if (
+            #         (self.player1.points - self.player2.points)
+            #         * (self.player1.points - self.player2.points)
+            #         == 1
+            #     )
+            #     else:
+            #          ("Win for " + score)
+            # )
