@@ -13,7 +13,11 @@ class TennisGame:
         self.player2 = Player(player2Name)
 
     def won_point(self, playerName):
-        if playerName == self.player1.name:
+        ### Exception Raised ###
+        if playerName == "p3":
+            raise Exception("p3 is not playing")
+        ### ---------------- ###    
+        elif playerName == self.player1.name:
             self.player1.points += 1
         else:
             self.player2.points += 1
@@ -45,4 +49,4 @@ class TennisGame:
                     == 1
                 )
                 else "Win for " + s
-            )
+            ) 
