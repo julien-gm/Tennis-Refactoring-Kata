@@ -29,7 +29,7 @@ class TennisGame:
             self.player1.points + self.player2.points > 6
         ):
             self.set_win == True
-        if (self.player1.points < 4 and self.player2.points < 4) and (
+        elif (self.player1.points < 4 and self.player2.points < 4) and (
             self.player1.points + self.player2.points < 6
         ):
             points = ["Love", "Fifteen", "Thirty", "Forty"]
@@ -57,4 +57,3 @@ class TennisGame:
                 else "Win for " + s
             )
 
-            
