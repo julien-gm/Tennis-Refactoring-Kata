@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 
-from contextvars import Context
 
 
 class Player:
