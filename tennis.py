@@ -13,9 +13,7 @@ class TennisGame:
         self.player2 = Player(player2Name)
 
     def won_point(self, playerName):
-        if (self.player1.points == 7 and self.player2.points == 5) or (
-            self.player1.points == 5 and self.player2.points == 7
-        ):
+        if self.score().startswith("Win for"):
             raise Exception("Game is over")
         if playerName == self.player1.name:
             self.player1.points += 1
