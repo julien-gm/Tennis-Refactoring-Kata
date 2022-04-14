@@ -14,9 +14,9 @@ class TennisGame:
         self.set_win = False
 
     def won_point(self, playerName):
-        if self.set_win: 
+        if self.set_win:
             raise Exception('Game is over')
-        else:    
+        else:
             if playerName != self.player1.name and playerName != self.player2.name:
                 raise Exception(playerName + " is not playing")
             elif playerName == self.player1.name:
@@ -44,8 +44,8 @@ class TennisGame:
                 else self.player2.name
             )
             if (
-                (self.player1.points - self.player2.points) 
-                * (self.player1.points - self.player2.points) == 1):
+                (self.player1.points - self.player2.points)
+                    * (self.player1.points - self.player2.points) == 1):
                 return "Advantage " + score
             else:
                 self.set_win = True
