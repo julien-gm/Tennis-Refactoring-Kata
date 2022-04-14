@@ -16,7 +16,7 @@ class TennisGame:
     def won_point(self, playerName):
         if self.set_win == True: 
             raise Exception('Game is over')
-        else:    
+        if self.set_win == False:    
             if playerName == self.player1.name:
                 self.player1.points += 1
             elif playerName == self.player2.name:
