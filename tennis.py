@@ -5,6 +5,8 @@ class Player:
     def __init__(self, name):
         self.name = name
         self.points = 0
+
+
 class TennisGame:
     def __init__(self, player1Name, player2Name):
         self.player1 = Player(player1Name)
@@ -27,16 +29,6 @@ class TennisGame:
 
     def score(self):
         if (self.player1.points < 4 and self.player2.points < 4) and (
-
-    
-        
-          
-    
-
-        
-    
-    @@ -41,12 +46,20 @@ def score(self):
-  
             self.player1.points + self.player2.points < 6
         ):
             points = ["Love", "Fifteen", "Thirty", "Forty"]
