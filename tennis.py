@@ -17,9 +17,9 @@ class TennisGame:
             self.player1.points += 1
         elif playerName == self.player2.name:
             self.player2.points += 1
-        else: 
+        else:
             raise Exception(playerName + "is not playing")
-            
+
     def score(self):
         if (self.player1.points < 4 and self.player2.points < 4) and (
             self.player1.points + self.player2.points < 6
