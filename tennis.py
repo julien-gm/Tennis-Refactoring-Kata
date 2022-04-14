@@ -5,55 +5,57 @@ class Player:
     def __init__(self, name):
         self.name = name
         self.points = 0
-
-
 class TennisGame:
     def __init__(self, player1Name, player2Name):
         self.player1 = Player(player1Name)
         self.player2 = Player(player2Name)
+        self.set_win = False
 
     def won_point(self, playerName):
-        if self.set_win: 
+        if self.set_win == True:
             raise Exception('Game is over')
         else:    
+            ### Exception Raised ###
             if playerName != self.player1.name and playerName != self.player2.name:
                 raise Exception(playerName + " is not playing")
+            ### ---------------- ###  
             elif playerName == self.player1.name:
                 self.player1.points += 1
             else:
                 self.player2.points += 1
 
+
     def score(self):
         if (self.player1.points < 4 and self.player2.points < 4) and (
+
+    
+        
+          
+    
+
+        
+    
+    @@ -41,12 +46,20 @@ def score(self):
+  
             self.player1.points + self.player2.points < 6
         ):
             points = ["Love", "Fifteen", "Thirty", "Forty"]
-            s = points[self.player1.points]
+            score = points[self.player1.points]
             return (
-                s + "-All"
+                score + "-All"
                 if (self.player1.points == self.player2.points)
-                else s + "-" + points[self.player2.points]
+                else score + "-" + points[self.player2.points]
             )
         else:
             if self.player1.points == self.player2.points:
                 return "Deuce"
-            s = (
+            score = (
                 self.player1.name
                 if self.player1.points > self.player2.points
                 else self.player2.name
             )
-            return (
-                "Advantage " + s
-                if (
-                    (self.player1.points - self.player2.points)
-                    * (self.player1.points - self.player2.points)
-                    == 1
-                )
-                else "Win for " + s
-            )
-    
-    # def game(self):
-    #     if (self.player1.points >= 4 and self.player2.points >= 4) and (
-    #         self.player1.points + self.player2.points > 6
-    #     ):
-    #         raise Exception('Game is over')
+            if ((self.player1.points - self.player2.points) * (self.player1.points - self.player2.points) == 1):
+                return "Advantage " + score
+            else:
+                self.set_win = True
+                return "Win for " + score
