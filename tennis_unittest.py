@@ -3,8 +3,10 @@
 import unittest
 
 from tennis_game import TennisGame
+from tennis_set import TennisSet
+from player import Player
 
-test_cases = [
+game_test_cases = [
     (0, 0, "Love-All", "player1", "player2"),
     (1, 1, "Fifteen-All", "player1", "player2"),
     (2, 2, "Thirty-All", "player1", "player2"),
@@ -45,25 +47,27 @@ test_cases = [
 ]
 
 
-def play_game(p1_points, p2_points, p1_name, p2_name):
-    game = TennisGame(p1_name, p2_name)
+def play_game(p1_points, p2_points, player1, player2):
+    game = TennisGame(player1, player2)
     for i in range(max(p1_points, p2_points)):
         if i < p1_points:
-            game.won_point(p1_name)
+            game.won_point(player1.name)
         if i < p2_points:
-            game.won_point(p2_name)
+            game.won_point(player2.name)
     return game
 
 
 class TestTennis(unittest.TestCase):
     def test_Score_Game(self):
-        for test_case in test_cases:
+        for test_case in game_test_cases:
             (p1Points, p2Points, score, p1Name, p2Name) = test_case
-            game = play_game(p1Points, p2Points, p1Name, p2Name)
+            player1 = Player(p1Name)
+            player2 = Player(p2Name)
+            game = play_game(p1Points, p2Points, player1, player2)
             self.assertEqual(score, game.score())
 
     def test_Score_Games(self):
-        game = TennisGame("p1", "p2")
+        game = TennisGame(Player("p1"), Player("p2"))
         with self.assertRaises(Exception) as context:
             game.won_point("p3")
         self.assertTrue("p3 is not playing" in str(context.exception))
@@ -78,7 +82,71 @@ class TestTennis(unittest.TestCase):
         self.assertEqual("Win for p1", game.score())
         with self.assertRaises(Exception) as context:
             game.won_point("p1")
-        self.assertTrue('Game is over' in str(context.exception))
+        self.assertTrue("Game is over" in str(context.exception))
+
+    def test_Score_Set(self):
+        tennis_set = TennisSet(Player("p1"), Player("p2"))
+        tennis_set.won_point("p1")
+        with self.assertRaises(Exception) as context:
+            tennis_set.won_point("p3")
+        self.assertTrue("p3 is not playing" in str(context.exception))
+        self.assertEqual("p1: 0\np2: 0\nFifteen-Love", tennis_set.score())
+        for i in range(4):
+            tennis_set.won_point("p2")
+        self.assertEqual("p1: 0\np2: 1\nLove-All", tennis_set.score())
+        for i in range(4):
+            tennis_set.won_point("p2")
+        self.assertEqual("p1: 0\np2: 2\nLove-All", tennis_set.score())
+        for i in range(4):
+            tennis_set.won_point("p2")
+        self.assertEqual("p1: 0\np2: 3\nLove-All", tennis_set.score())
+        for i in range(5):
+            tennis_set.won_point("p2")
+        self.assertEqual("p1: 0\np2: 4\nLove-Fifteen", tennis_set.score())
+        for i in range(15):
+            tennis_set.won_point("p1")
+        self.assertEqual("p1: 3\np2: 4\nForty-Love", tennis_set.score())
+
+    def test_Score_Set_Winner(self):
+        tennis_set = TennisSet(Player("p1"), Player("p2"))
+        for game_number in range(6):
+            self.assertEqual(
+                "p1: " + str(game_number) + "\np2: 0\nLove-All", tennis_set.score()
+            )
+            for points in range(4):
+                tennis_set.won_point("p1")
+        self.assertEqual("p1: 6\np2: 0\nWin for p1", tennis_set.score())
+        with self.assertRaises(Exception) as context:
+            tennis_set.won_point("p2")
+        self.assertTrue("Set is over, p1 has won" in str(context.exception))
+
+    def test_Score_Tie_Break(self):
+        tennis_set = TennisSet(Player("p1"), Player("p2"))
+        for game_number in range(6):
+            self.assertEqual(
+                "p1: " + str(game_number) + "\np2: " + str(game_number) + "\nLove-All",
+                tennis_set.score(),
+            )
+            for points in range(4):
+                tennis_set.won_point("p1")
+            for points in range(4):
+                tennis_set.won_point("p2")
+        self.assertEqual("p1: 6\np2: 6\n0-0", tennis_set.score())
+
+        for points in range(6):
+            tennis_set.won_point("p2")
+        self.assertEqual("p1: 6\np2: 6\n0-6", tennis_set.score())
+
+        for points in range(7):
+            tennis_set.won_point("p1")
+        self.assertEqual("p1: 6\np2: 6\n7-6", tennis_set.score())
+
+        tennis_set.won_point("p1")
+        self.assertEqual("p1: 7\np2: 6\nWin for p1", tennis_set.score())
+
+        with self.assertRaises(Exception) as context:
+            tennis_set.won_point("p2")
+        self.assertTrue("Set is over, p1 has won" in str(context.exception))
 
 
 if __name__ == "__main__":
