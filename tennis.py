@@ -13,38 +13,42 @@ class TennisGame:
         self.player2 = Player(player2Name)
 
     def won_point(self, playerName):
+        if (self.player1.points == 5 and self.player2.points ==7) or (
+            self.player1.points == 7 + self.player2.points == 5
+        ):
+            raise Exception ("Game is over")
         if playerName == self.player1.name:
             self.player1.points += 1
         elif playerName == self.player2.name:
             self.player2.points += 1
         else:
-            raise Exception(playerName + "is not playing")
+            raise Exception(playerName + " is not playing")
 
     def score(self):
         if (self.player1.points < 4 and self.player2.points < 4) and (
             self.player1.points + self.player2.points < 6
         ):
             points = ["Love", "Fifteen", "Thirty", "Forty"]
-            s = points[self.player1.points]
+            p = points[self.player1.points]
             return (
-                s + "-All"
+                p + "-All"
                 if (self.player1.points == self.player2.points)
-                else s + "-" + points[self.player2.points]
+                else p + "-" + points[self.player2.points]
             )
         else:
             if self.player1.points == self.player2.points:
                 return "Deuce"
-            s = (
+            player = (
                 self.player1.name
                 if self.player1.points > self.player2.points
                 else self.player2.name
             )
             return (
-                "Advantage " + s
+                "Advantage " + player
                 if (
                     (self.player1.points - self.player2.points)
                     * (self.player1.points - self.player2.points)
                     == 1
                 )
-                else "Win for " + s
+                else "Win for " + player
             )
