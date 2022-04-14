@@ -78,7 +78,16 @@ class TestTennis(unittest.TestCase):
         self.assertEqual("Win for p1", game.score())
         with self.assertRaises(Exception) as context:
             game.won_point("p1")
-        self.assertTrue('Game is over' in str(context.exception))
+        self.assertTrue("Game is over" in str(context.exception))
+
+    def test_Score_Games_No_Win(self):
+        game = TennisGame("p1", "p2")
+
+        for point in range(4):
+            game.won_point("p1")
+        with self.assertRaises(Exception) as context:
+            game.won_point("p1")
+        self.assertTrue("Game is over" in str(context.exception))
 
 
 if __name__ == "__main__":
