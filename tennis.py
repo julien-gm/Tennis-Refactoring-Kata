@@ -17,7 +17,7 @@ class TennisGame:
 
         if playerName != self.player1.name and playerName != self.player2.name:
             raise Exception(playerName + " is not playing")
-        elif playerName == self.player1.name:
+        if playerName == self.player1.name:
             self.player1.points += 1
         else:
             self.player2.points += 1
