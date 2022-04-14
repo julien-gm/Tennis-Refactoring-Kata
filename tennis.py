@@ -1,48 +1,36 @@
-# -*- coding: utf-8 -*-
 
 
-class Player:
-    def __init__(self, name):
-        self.name = name
-        self.points = 0
+class TennisGame3:
+    def __init__(self, player1Name, player2Name , player3Name):
+        self.p1N = player1Name
+        self.p2N = player2Name
+        self.p3N = player3Name
+        self.p1 = 0
+        self.p2 = 0
+        self.p3 = 0
 
-
-class TennisGame:
-    def __init__(self, player1Name, player2Name):
-        self.player1 = Player(player1Name)
-        self.player2 = Player(player2Name)
-
-    def won_point(self, playerName):
-        if playerName == self.player1.name:
-            self.player1.points += 1
-        else:
-            self.player2.points += 1
+    def won_point(self, n):
+        if n == self.p1N:
+            self.p1 += 1
+        elif n == self.p2N: 
+            self.p2 += 1
+        else :
+            self.p3 += 1
 
     def score(self):
-        if (self.player1.points < 4 and self.player2.points < 4) and (
-            self.player1.points + self.player2.points < 6
-        ):
-            points = ["Love", "Fifteen", "Thirty", "Forty"]
-            s = points[self.player1.points]
-            return (
-                s + "-All"
-                if (self.player1.points == self.player2.points)
-                else s + "-" + points[self.player2.points]
-            )
+        if (self.p1 < 4 and self.p2 < 4 and self.p3) and (self.p1 + self.p2 + self.p3 < 6):
+            p = ["Love", "Fifteen", "Thirty", "Forty"]
+            score = p[self.p1]
+            return score + "-All" if (self.p1 == self.p2 or self.p1 == self.p3 or self.p2 == self.p3) else score + "-" + p[self.p2 , self.p3]
         else:
-            if self.player1.points == self.player2.points:
+            if self.p1 == self.p2 or self.p1 == self.p3 or self.p2 == self.p3:
                 return "Deuce"
-            s = (
-                self.player1.name
-                if self.player1.points > self.player2.points
-                else self.player2.name
-            )
+            s = self.p1N if self.p1 > self.p2 or self.p1 > self.p3 or self.p2 > self.p3 else self.p2N
             return (
                 "Advantage " + s
-                if (
-                    (self.player1.points - self.player2.points)
-                    * (self.player1.points - self.player2.points)
-                    == 1
-                )
+                if ((self.p1 - self.p2 - self.p3) * (self.p1 - self.p2 - self.p3) == 1)
                 else "Win for " + s
             )
+
+test = TennisGame3()
+test()

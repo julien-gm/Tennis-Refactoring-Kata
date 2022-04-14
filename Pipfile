@@ -7,6 +7,7 @@ name = "pypi"
 pytest = "*"
 flake8 = "*"
 black = "*"
+atomicwrites = "*"
 
 [dev-packages]
 
