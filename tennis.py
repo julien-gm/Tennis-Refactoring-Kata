@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
+from contextvars import Context
+
+
 class Player:
     def __init__(self, name):
         self.name = name
@@ -13,7 +16,12 @@ class TennisGame:
         self.player2 = Player(player2Name)
 
     def won_point(self, playerName):
-        if playerName == self.player1.name:
+        if self.score().startswith("Win for") :
+            raise Exception ('Game is over')
+
+        if playerName != self.player1.name and playerName != self.player2.name:
+            raise Exception (playerName + " is not playing")
+        elif playerName == self.player1.name:
             self.player1.points += 1
         else:
             self.player2.points += 1
@@ -37,6 +45,7 @@ class TennisGame:
                 if self.player1.points > self.player2.points
                 else self.player2.name
             )
+            
             return (
                 "Advantage " + s
                 if (
@@ -44,5 +53,7 @@ class TennisGame:
                     * (self.player1.points - self.player2.points)
                     == 1
                 )
+
                 else "Win for " + s
+
             )
