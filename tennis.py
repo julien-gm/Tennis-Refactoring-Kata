@@ -45,7 +45,6 @@ class TennisGame:
                 if self.player1.points > self.player2.points
                 else self.player2.name
             )
-            
             return (
                 "Advantage " + s
                 if (
