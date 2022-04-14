@@ -25,6 +25,10 @@ class TennisGame:
                 self.player2.points += 1
 
     def score(self):
+        if (self.player1.points >= 4 and self.player2.points >= 4) and (
+            self.player1.points + self.player2.points > 6
+        ):
+            self.set_win == True
         if (self.player1.points < 4 and self.player2.points < 4) and (
             self.player1.points + self.player2.points < 6
         ):
@@ -35,7 +39,7 @@ class TennisGame:
                 if (self.player1.points == self.player2.points)
                 else s + "-" + points[self.player2.points]
             )
-        elif:
+        else:
             if self.player1.points == self.player2.points:
                 return "Deuce"
             s = (
@@ -52,9 +56,5 @@ class TennisGame:
                 )
                 else "Win for " + s
             )
-        else:
-            if (self.player1.points >= 4 and self.player2.points >= 4) and (
-                self.player1.points + self.player2.points > 6
-            ):
-                self.set_win == True
-                raise Exception('Game is over')
+
+            
