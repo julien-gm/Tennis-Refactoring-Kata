@@ -14,4 +14,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Check last step status
-        run: echo "Test Flake8" && python3.9 -m flake8 tennis.py
+        run: |
+          echo "Test Flake8"
+          python -m flake8 *.py
