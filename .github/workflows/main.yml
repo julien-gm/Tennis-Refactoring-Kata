@@ -8,8 +8,7 @@ on:
 jobs:
   tests:
     runs-on:
-      - self-hosted
-      - linter
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
