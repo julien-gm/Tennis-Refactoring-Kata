@@ -11,7 +11,7 @@ jobs:
       - self-hosted
       - linter
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+
       - name: Check last step status
         run: echo "Test Flake8" && python3.9 -m flake8 tennis.py
