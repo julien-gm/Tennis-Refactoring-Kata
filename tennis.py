@@ -162,6 +162,8 @@ class TennisGame3:
         self.p2 = 0
 
     def won_point(self, n):
+        if n not in [self.p1N, self.p2N]:
+            raise Exception(n + " is not playing")
         if n == self.p1N:
             self.p1 += 1
         else:

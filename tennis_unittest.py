@@ -74,6 +74,14 @@ class TestTennis(unittest.TestCase):
             game = play_game(TennisGame3, p1Points, p2Points, p1Name, p2Name)
             self.assertEqual(score, game.score())
 
+    #
+    def test_dfdf(self):
+        game = TennisGame3("player1", "player2")
+        with self.assertRaises(Exception) as context:
+            game.won_point("p3")
+        self.assertTrue("p3 is not playing" in str(context.exception))
+        # self.assertEqual("Love-All", game.score())
+
 
 if __name__ == "__main__":
     unittest.main()
