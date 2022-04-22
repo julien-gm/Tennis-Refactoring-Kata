@@ -15,4 +15,5 @@ jobs:
       - name: Check last step status
         run: |
           echo "Test Flake8"
+          pip install -r requirements.txt
           python -m flake8 *.py
