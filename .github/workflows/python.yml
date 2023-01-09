@@ -1,8 +1,8 @@
-name: Validate
+name: Validate tests
 on: [push, pull_request]
 jobs:
   validate:
-    name: Validate
+    name: Validate tests
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python 3.9

@@ -1,8 +1,8 @@
-name: Validate
+name: Validate linter
 on: [push, pull_request]
 jobs:
   validate:
-    name: Validate
+    name: Validate linter
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python 3.9
@@ -15,4 +15,4 @@ jobs:
       - name: flake8
         run: |
           pip install flake8
-          python -m flake8 *flake8.py
+          python -m flake8 *.py
