@@ -1,2 +1,2 @@
-flake 8
+flake8
 pytest
