@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 class TennisGame1:
     def __init__(self, player1Name, player2Name):
         self.player1Name = player1Name
@@ -48,7 +47,6 @@ class TennisGame1:
                 }[tempScore]
         return result
 
-
 class TennisGame2:
     def __init__(self, player1Name, player2Name):
         self.player1Name = player1Name
@@ -61,7 +59,6 @@ class TennisGame2:
             self.p1points += 1
         else:
             self.p2points += 1
-
 
     def score(self):
         result = ""
@@ -139,9 +136,6 @@ class TennisGame2:
         ):
             result = "Win for " + self.player2Name
         return result
-
-
-
 
 class TennisGame3:
     def __init__(self, player1Name, player2Name):
