@@ -1,18 +1,29 @@
-name: Validate
-on: [push, pull_request]
+name: Unit tests and formating
+
+on:
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  validate:
-    name: Validate
-    runs-on: ubuntu-latest
+  linter:
+    runs-on:
+      - ubuntu-latest
     steps:
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v1
-        with:
-          python-version: "3.9"
+      - uses: actions/checkout@v2
 
-      - uses: actions/checkout@v1
-
-      - name: test
+      - name: Check formating with flake8
         run: |
-          pip install pytest
+          echo "Test Flake8"
+          pip install -r requirements.txt
+          python -m flake8 *.py
+  tests:
+    runs-on:
+      - ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run TU
+        run: |
+          pip install -r requirements.txt
           python -m pytest *test.py
