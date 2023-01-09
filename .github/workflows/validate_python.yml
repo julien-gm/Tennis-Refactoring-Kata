@@ -1,0 +1,18 @@
+name: Validate_pep
+on: [push, pull_request]
+jobs:
+  validate:
+    name: Validate_pep
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.9"
+
+      - uses: actions/checkout@v1
+
+      - name: test_pep
+        run: |
+          pip install flake8
+          flake8 *.py
