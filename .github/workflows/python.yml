@@ -16,3 +16,22 @@ jobs:
         run: |
           pip install pytest
           python -m pytest *test.py
+
+name: Validated_python2
+on: [push, pull_request]
+jobs:
+  validate:
+    name: Validate_python2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.9"
+
+      - uses: actions/checkout@v1
+
+      - name: t2
+        run: |
+          pip install flake8
+          flake8 *.py
