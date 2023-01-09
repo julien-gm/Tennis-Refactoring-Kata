@@ -1,8 +1,8 @@
-name: Validate
+name: Validate_pep8
 on: [push, pull_request]
 jobs:
   validate:
-    name: Validate
+    name: Validate_pep8
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python 3.9
