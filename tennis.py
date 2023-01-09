@@ -11,7 +11,8 @@ class TennisGame1:
     def won_point(self, playerName):
         if playerName == self.player1Name:
             self.p1points += 1
-        else:
+
+        elif playerName == self.player2Name:
             self.p2points += 1
 
     def score(self):
@@ -59,7 +60,7 @@ class TennisGame2:
     def won_point(self, playerName):
         if playerName == self.player1Name:
             self.P1Score()
-        else:
+        elif playerName == self.player2Name:
             self.P2Score()
 
     def score(self):
@@ -164,7 +165,8 @@ class TennisGame3:
     def won_point(self, n):
         if n == self.p1N:
             self.p1 += 1
-        else:
+        elif n == self.p2N:
+
             self.p2 += 1
 
     def score(self):
