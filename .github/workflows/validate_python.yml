@@ -15,4 +15,4 @@ jobs:
       - name: test
         run: |
           pip install flake8
-          python flake8 *.py
+          flake8 *.py
