@@ -29,9 +29,9 @@ class TennisGame1:
         tempScore = 0
         if self.p1points == self.p2points:
             result = {
-                0: LOVE+ALL,
-                1: FIFTEEN+ALL,
-                2: THIRTY+ALL,
+                0: LOVE + ALL,
+                1: FIFTEEN + ALL,
+                2: THIRTY + ALL,
             }.get(self.p1points, DEUCE)
         elif self.p1points >= 4 or self.p2points >= 4:
             minusResult = self.p1points - self.p2points
@@ -155,29 +155,38 @@ class TennisGame2:
 
 class TennisGame3:
     def __init__(self, player1Name, player2Name):
-        self.p1N = player1Name
-        self.p2N = player2Name
-        self.p1 = 0
-        self.p2 = 0
+        self.name_player_1 = player1Name
+        self.name_player_2 = player2Name
+        self.score_player_1 = 0
+        self.score_player_2 = 0
 
     def won_point(self, n):
-        if n == self.p1N:
-            self.p1 += 1
-        elif n == self.p2N:
-
-            self.p2 += 1
+        if n == self.name_player_1:
+            self.score_player_1 += 1
+        elif n == self.name_player_2:
+            self.score_player_2 += 1
 
     def score(self):
-        if (self.p1 < 4 and self.p2 < 4) and (self.p1 + self.p2 < 6):
-            p = [LOVE, FIFTEEN, THIRTY, FORTY]
-            s = p[self.p1]
-            return s + ALL if (self.p1 == self.p2) else s + "-" + p[self.p2]
+        if (self.score_player_1 < 4 and self.score_player_2 < 4) and (
+            self.score_player_1 + self.score_player_2 < 6
+        ):
+            point = [LOVE, FIFTEEN, THIRTY, FORTY]
+            score = p[self.score_player_1]
+            if self.score_player_1 == self.score_player_2:
+                return score + ALL
+            else:
+                return score + "-" + point[self.score_player_2]
         else:
-            if self.p1 == self.p2:
+
+            if self.score_player_1 == self.score_player_2:
                 return DEUCE
-            s = self.p1N if self.p1 > self.p2 else self.p2N
-            return (
-                ADVANTAGE + s
-                if ((self.p1 - self.p2) * (self.p1 - self.p2) == 1)
-                else WIN + s
-            )
+
+            if self.score_player_1 > self.score_player_2:
+                win_player = self.name_player_1
+            elif self.score_player_1 < self.score_player_2:
+                win_player = self.name_player_2
+
+            if abs(self.score_player_1 - self.score_player_2)  == 1:
+                return ADVANTAGE + win_player
+            else:
+                return WIN + win_player
