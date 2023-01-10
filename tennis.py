@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from player_class import Player
+
 
 ADVANTAGE = "Advantage "
 WIN = "Win for "
@@ -8,9 +10,6 @@ THIRTY = "Thirty"
 FORTY = "Forty"
 DEUCE = "Deuce"
 ALL = "-All"
-
-
-from player_class import Player
 
 
 class TennisGame1:
@@ -62,91 +61,91 @@ class TennisGame1:
 
 class TennisGame2:
     def __init__(self, player1, player2):
-        self.player1 = Player(player1)
-        self.player2 = Player(player2)
+        self.p1 = Player(player1)
+        self.p2 = Player(player2)
 
     def won_point(self, player):
-        if player == self.player1.name:
-            self.player1.points += 1
-        elif player == self.player2.name:
-            self.player2.points += 1
+        if player == self.p1.name:
+            self.p1.points += 1
+        elif player == self.p2.name:
+            self.p2.points += 1
 
     def score(self):
         result = ""
-        if self.player1.points == self.player2.points and self.player1.points < 3:
-            if self.player1.points == 0:
+        if self.p1.points == self.p2.points and self.p1.points < 3:
+            if self.p1.points == 0:
                 result = LOVE
-            elif self.player1.points == 1:
+            elif self.p1.points == 1:
                 result = FIFTEEN
-            elif self.player1.points == 2:
+            elif self.p1.points == 2:
                 result = THIRTY
             result += ALL
-        if self.player1.points == self.player2.points and self.player1.points > 2:
+        if self.p1.points == self.p2.points and self.p1.points > 2:
             result = DEUCE
 
         P1res = ""
         P2res = ""
-        if self.player1.points > 0 and self.player2.points == 0:
-            if self.player1.points == 1:
+        if self.p1.points > 0 and self.p2.points == 0:
+            if self.p1.points == 1:
                 P1res = FIFTEEN
-            elif self.player1.points == 2:
+            elif self.p1.points == 2:
                 P1res = THIRTY
-            elif self.player1.points == 3:
+            elif self.p1.points == 3:
                 P1res = FORTY
 
             P2res = LOVE
             result = P1res + "-" + P2res
-        if self.player2.points > 0 and self.player1.points == 0:
-            if self.player2.points == 1:
+        if self.p2.points > 0 and self.p1.points == 0:
+            if self.p2.points == 1:
                 P2res = FIFTEEN
-            elif self.player2.points == 2:
+            elif self.p2.points == 2:
                 P2res = THIRTY
-            elif self.player2.points == 3:
+            elif self.p2.points == 3:
                 P2res = FORTY
 
             P1res = LOVE
             result = P1res + "-" + P2res
 
-        if self.player1.points > self.player2.points and self.player1.points < 4:
-            if self.player1.points == 2:
+        if self.p1.points > self.p2.points and self.p1.points < 4:
+            if self.p1.points == 2:
                 P1res = THIRTY
-            elif self.player1.points == 3:
+            elif self.p1.points == 3:
                 P1res = FORTY
-            if self.player2.points == 1:
+            if self.p2.points == 1:
                 P2res = FIFTEEN
-            elif self.player2.points == 2:
+            elif self.p2.points == 2:
                 P2res = THIRTY
             result = P1res + "-" + P2res
-        if self.player2.points > self.player1.points and self.player2.points < 4:
-            if self.player2.points == 2:
+        if self.p2.points > self.p1.points and self.p2.points < 4:
+            if self.p2.points == 2:
                 P2res = THIRTY
-            elif self.player2.points == 3:
+            elif self.p2.points == 3:
                 P2res = FORTY
-            if self.player1.points == 1:
+            if self.p1.points == 1:
                 P1res = FIFTEEN
-            elif self.player1.points == 2:
+            elif self.p1.points == 2:
                 P1res = THIRTY
 
             result = P1res + "-" + P2res
 
-        if self.player1.points > self.player2.points and self.player2.points >= 3:
-            result = ADVANTAGE + self.player1.name
+        if self.p1.points > self.p2.points and self.p2.points >= 3:
+            result = ADVANTAGE + self.p1.name
 
-        if self.player2.points > self.player1.points and self.player1.points >= 3:
-            result = ADVANTAGE + self.player2.name
+        if self.p2.points > self.p1.points and self.p1.points >= 3:
+            result = ADVANTAGE + self.p2.name
 
         if (
-            self.player1.points >= 4
-            and self.player2.points >= 0
-            and (self.player1.points - self.player2.points) >= 2
+            self.p1.points >= 4
+            and self.p2.points >= 0
+            and (self.p1.points - self.p2.points) >= 2
         ):
-            result = WIN + self.player1.name
+            result = WIN + self.p1.name
         if (
-            self.player2.points >= 4
-            and self.player1.points >= 0
-            and (self.player2.points - self.player1.points) >= 2
+            self.p2.points >= 4
+            and self.p1.points >= 0
+            and (self.p2.points - self.p1.points) >= 2
         ):
-            result = WIN + self.player2.name
+            result = WIN + self.p2.name
         return result
 
 
@@ -175,7 +174,11 @@ class TennisGame3:
         else:
             if self.p1.points == self.p2.points:
                 return DEUCE
-            s = self.p1.name if self.p1.points > self.p2.points else self.p2.name
+            s = (
+                self.p1.name
+                if self.p1.points > self.p2.points
+                else self.p2.name
+            )
             return (
                 ADVANTAGE + s
                 if (
