@@ -170,25 +170,23 @@ class TennisGame3:
         if (self.score_player_1 < 4 and self.score_player_2 < 4) and (
             self.score_player_1 + self.score_player_2 < 6
         ):
-            p = [LOVE, FIFTEEN, THIRTY, FORTY]
-            s = p[self.score_player_1]
+            point = [LOVE, FIFTEEN, THIRTY, FORTY]
+            score = p[self.score_player_1]
             if self.score_player_1 == self.score_player_2:
-                return s + ALL
+                return score + ALL
             else:
-                return s + "-" + p[self.score_player_2]
+                return score + "-" + point[self.score_player_2]
         else:
 
             if self.score_player_1 == self.score_player_2:
                 return DEUCE
 
             if self.score_player_1 > self.score_player_2:
-                s = self.name_player_1
+                win_player = self.name_player_1
             elif self.score_player_1 < self.score_player_2:
-                s = self.name_player_2
+                win_player = self.name_player_2
 
-            if (self.score_player_1 - self.score_player_2) * (
-                self.score_player_1 - self.score_player_2
-            ) == 1:
-                return ADVANTAGE + s
+            if abs(self.score_player_1 - self.score_player_2)  == 1:
+                return ADVANTAGE + win_player
             else:
-                return WIN + s
+                return WIN + win_player
