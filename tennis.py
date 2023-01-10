@@ -16,9 +16,11 @@ class TennisGame1:
     def __init__(self, player1, player2):
         self.player1 = Player(player1)
         self.player2 = Player(player2)
+        self.game_over = False
 
     def won_point(self, playerName):
-
+        if self.game_over:
+            raise Exception("Game is over")
         if playerName == self.player1.name:
             self.player1.points += 1
         elif playerName == self.player2.name:
@@ -41,8 +43,10 @@ class TennisGame1:
                 result = ADVANTAGE + self.player2.name
             elif minusResult >= 2:
                 result = WIN + self.player1.name
+                self.game_over = True
             else:
                 result = WIN + self.player2.name
+                self.game_over = True
         else:
             for i in range(1, 3):
                 if i == 1:

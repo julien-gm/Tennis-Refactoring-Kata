@@ -62,6 +62,20 @@ class TestTennis(unittest.TestCase):
             game = play_game(TennisGame1, p1Points, p2Points, p1Name, p2Name)
             self.assertEqual(score, game.score())
 
+    def test_Score_Games(self):
+        game = TennisGame1("p1", "p2")
+        game.won_point("p1")
+        self.assertEqual("Fifteen-Love", game.score())
+        game.won_point("p1")
+        self.assertEqual("Thirty-Love", game.score())
+        game.won_point("p1")
+        self.assertEqual("Forty-Love", game.score())
+        game.won_point("p1")
+        self.assertEqual("Win for p1", game.score())
+        with self.assertRaises(Exception) as context:
+            game.won_point("p1")
+        self.assertTrue("Game is over" in str(context.exception))
+
     def test_Score_Game2(self):
         for testcase in test_cases:
             (p1Points, p2Points, score, p1Name, p2Name) = testcase
