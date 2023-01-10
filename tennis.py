@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class TennisGame1:
     def __init__(self, player1Name, player2Name):
         self.player1Name = player1Name
@@ -142,29 +143,36 @@ class TennisGame2:
 
 class TennisGame3:
     def __init__(self, player1Name, player2Name):
-        self.p1N = player1Name
-        self.p2N = player2Name
-        self.p1 = 0
-        self.p2 = 0
+        self.name_player_1 = player1Name
+        self.name_player_2 = player2Name
+        self.score_player_1 = 0
+        self.score_player_2 = 0
 
     def won_point(self, n):
-        if n == self.p1N:
-            self.p1 += 1
-        elif n == self.p2N:
-
-            self.p2 += 1
+        if n == self.name_player_1:
+            self.score_player_1 += 1
+        elif n == self.name_player_2:
+            self.score_player_2 += 1
 
     def score(self):
-        if (self.p1 < 4 and self.p2 < 4) and (self.p1 + self.p2 < 6):
+        if (self.score_player_1 < 4 and self.score_player_2 < 4) and (self.score_player_1 + self.score_player_2 < 6):
             p = ["Love", "Fifteen", "Thirty", "Forty"]
-            s = p[self.p1]
-            return s + "-All" if (self.p1 == self.p2) else s + "-" + p[self.p2]
+            s = p[self.score_player_1]
+            if (self.score_player_1 == self.score_player_2):
+                return s + "-All" 
+            else :
+                return s + "-" + p[self.score_player_2]
         else:
-            if self.p1 == self.p2:
+            
+            if self.score_player_1 == self.score_player_2:
                 return "Deuce"
-            s = self.p1N if self.p1 > self.p2 else self.p2N
-            return (
-                "Advantage " + s
-                if ((self.p1 - self.p2) * (self.p1 - self.p2) == 1)
-                else "Win for " + s
-            )
+            
+            if self.score_player_1 > self.score_player_2 :
+                s = self.name_player_1  
+            elif self.score_player_1 < self.score_player_2 :
+                s = self.name_player_2
+            
+            if (self.score_player_1 - self.score_player_2) * (self.score_player_1 - self.score_player_2) == 1:
+                return "Advantage " + s
+            else :
+                return  "Win for " + s

@@ -1,4 +1,4 @@
-name: Unit tests and formating
+name: Unit tests and formating 2
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Check formating with flake8
+      - name: Check formating with flake8 2
         run: |
           echo "Test Flake8"
           pip install -r requirements.txt
@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run TU
+      - name: Run TU2
         run: |
           pip install -r requirements.txt
-          python -m pytest *test.py
+          python -m pytest *test2.py
