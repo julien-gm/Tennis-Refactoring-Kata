@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 
-all = "-All"
-win = "Win for "
-advantage = "Advantage "
-deuce = "Deuce"
-love = "Love"
-fifteen = "Fifteen"
-thirty = "Thirty"
-forty = "Forty"
+ALL = "-All"
+WIN = "Win for "
+ADVANTAGE = "Advantage "
+DEUCE = "Deuce"
+LOVE = "Love"
+FIFTEEN = "Fifteen"
+THIRTY = "Thirty"
+FORTY = "Forty"
+
 
 class TennisGame1:
     def __init__(self, player1Name, player2Name):
@@ -28,20 +29,20 @@ class TennisGame1:
         tempScore = 0
         if self.p1points == self.p2points:
             result = {
-                0: love + all,
-                1: fifteen + all,
-                2: thirty + all,
-            }.get(self.p1points, deuce)
+                0: LOVE + ALL,
+                1: FIFTEEN + ALL,
+                2: THIRTY + ALL,
+            }.get(self.p1points, DEUCE)
         elif self.p1points >= 4 or self.p2points >= 4:
             minusResult = self.p1points - self.p2points
             if minusResult == 1:
-                result = advantage + self.player1Name
+                result = ADVANTAGE + self.player1Name
             elif minusResult == -1:
-                result = advantage + self.player2Name
+                result = ADVANTAGE + self.player2Name
             elif minusResult >= 2:
-                result = win + self.player1Name
+                result = WIN + self.player1Name
             else:
-                result = win + self.player2Name
+                result = WIN + self.player2Name
         else:
             for i in range(1, 3):
                 if i == 1:
@@ -50,10 +51,10 @@ class TennisGame1:
                     result += "-"
                     tempScore = self.p2points
                 result += {
-                    0: love,
-                    1: fifteen,
-                    2: thirty,
-                    3: forty,
+                    0: LOVE,
+                    1: FIFTEEN,
+                    2: THIRTY,
+                    3: FORTY,
                 }[tempScore]
         return result
 
@@ -75,77 +76,77 @@ class TennisGame2:
         result = ""
         if self.p1points == self.p2points and self.p1points < 3:
             if self.p1points == 0:
-                result = love
+                result = LOVE
             elif self.p1points == 1:
-                result = fifteen
+                result = FIFTEEN
             elif self.p1points == 2:
-                result = thirty
-            result += all
+                result = THIRTY
+            result += ALL
         if self.p1points == self.p2points and self.p1points > 2:
-            result = deuce
+            result = DEUCE
 
         P1res = ""
         P2res = ""
         if self.p1points > 0 and self.p2points == 0:
             if self.p1points == 1:
-                P1res = fifteen
+                P1res = FIFTEEN
             elif self.p1points == 2:
-                P1res = thirty
+                P1res = THIRTY
             elif self.p1points == 3:
-                P1res = forty
+                P1res = FORTY
 
-            P2res = love
+            P2res = LOVE
             result = P1res + "-" + P2res
         if self.p2points > 0 and self.p1points == 0:
             if self.p2points == 1:
-                P2res = fifteen
+                P2res = FIFTEEN
             elif self.p2points == 2:
-                P2res = thirty
+                P2res = THIRTY
             elif self.p2points == 3:
-                P2res = forty
+                P2res = FORTY
 
-            P1res = love
+            P1res = LOVE
             result = P1res + "-" + P2res
 
         if self.p1points > self.p2points and self.p1points < 4:
             if self.p1points == 2:
-                P1res = thirty
+                P1res = THIRTY
             elif self.p1points == 3:
-                P1res = forty
+                P1res = FORTY
             if self.p2points == 1:
-                P2res = fifteen
+                P2res = FIFTEEN
             elif self.p2points == 2:
-                P2res = thirty
+                P2res = THIRTY
             result = P1res + "-" + P2res
         if self.p2points > self.p1points and self.p2points < 4:
             if self.p2points == 2:
-                P2res = thirty
+                P2res = THIRTY
             elif self.p2points == 3:
-                P2res = forty
+                P2res = FORTY
             if self.p1points == 1:
-                P1res = fifteen
+                P1res = FIFTEEN
             elif self.p1points == 2:
-                P1res = thirty
+                P1res = THIRTY
             result = P1res + "-" + P2res
 
         if self.p1points > self.p2points and self.p2points >= 3:
-            result = advantage + self.player1Name
+            result = ADVANTAGE + self.player1Name
 
         if self.p2points > self.p1points and self.p1points >= 3:
-            result = advantage + self.player2Name
+            result = ADVANTAGE + self.player2Name
 
         if (
             self.p1points >= 4
             and self.p2points >= 0
             and (self.p1points - self.p2points) >= 2
         ):
-            result = win + self.player1Name
+            result = WIN + self.player1Name
         if (
             self.p2points >= 4
             and self.p1points >= 0
             and (self.p2points - self.p1points) >= 2
         ):
-            result = win + self.player2Name
+            result = WIN + self.player2Name
         return result
 
 
@@ -165,15 +166,15 @@ class TennisGame3:
 
     def score(self):
         if (self.p1 < 4 and self.p2 < 4) and (self.p1 + self.p2 < 6):
-            p = [love, fifteen, thirty, forty]
+            p = [LOVE, FIFTEEN, THIRTY, FORTY]
             s = p[self.p1]
-            return s + all if (self.p1 == self.p2) else s + "-" + p[self.p2]
+            return s + ALL if (self.p1 == self.p2) else s + "-" + p[self.p2]
         else:
             if self.p1 == self.p2:
-                return deuce
+                return DEUCE
             s = self.p1N if self.p1 > self.p2 else self.p2N
             return (
-                advantage + s
+                ADVANTAGE + s
                 if ((self.p1 - self.p2) * (self.p1 - self.p2) == 1)
-                else win + s
+                else WIN + s
             )
