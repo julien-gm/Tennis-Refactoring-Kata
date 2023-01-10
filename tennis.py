@@ -107,7 +107,6 @@ class TennisGame2:
             elif self.p2points == 3:
                 P2res = FORTY
 
-
             P1res = LOVE
             result = P1res + "-" + P2res
 
