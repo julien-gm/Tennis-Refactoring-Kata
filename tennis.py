@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-ADVANTAGE = "Advantage "
+ALL = "-All"
 WIN = "Win for "
+ADVANTAGE = "Advantage "
+DEUCE = "Deuce"
 LOVE = "Love"
 FIFTEEN = "Fifteen"
 THIRTY = "Thirty"
 FORTY = "Forty"
-DEUCE = "Deuce"
-ALL = "-All"
 
 
 class TennisGame1:
@@ -29,9 +29,9 @@ class TennisGame1:
         tempScore = 0
         if self.p1points == self.p2points:
             result = {
-                0: LOVE+ALL,
-                1: FIFTEEN+ALL,
-                2: THIRTY+ALL,
+                0: LOVE + ALL,
+                1: FIFTEEN + ALL,
+                2: THIRTY + ALL,
             }.get(self.p1points, DEUCE)
         elif self.p1points >= 4 or self.p2points >= 4:
             minusResult = self.p1points - self.p2points
@@ -89,7 +89,6 @@ class TennisGame2:
         P2res = ""
         if self.p1points > 0 and self.p2points == 0:
             if self.p1points == 1:
-
                 P1res = FIFTEEN
             elif self.p1points == 2:
                 P1res = THIRTY
@@ -100,7 +99,6 @@ class TennisGame2:
             result = P1res + "-" + P2res
         if self.p2points > 0 and self.p1points == 0:
             if self.p2points == 1:
-
                 P2res = FIFTEEN
             elif self.p2points == 2:
                 P2res = THIRTY
@@ -129,7 +127,6 @@ class TennisGame2:
                 P1res = FIFTEEN
             elif self.p1points == 2:
                 P1res = THIRTY
-
             result = P1res + "-" + P2res
 
         if self.p1points > self.p2points and self.p2points >= 3:
