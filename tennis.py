@@ -88,44 +88,25 @@ class TennisGame2:
         P2res = ""
         if self.p1points > 0 and self.p2points == 0:
             if self.p1points == 1:
-
                 P1res = FIFTEEN
             elif self.p1points == 2:
                 P1res = THIRTY
             elif self.p1points == 3:
                 P1res = FORTY
-
-                P1res = FIFTEEN
-            if self.p1points == 2:
-                P1res = THIRTY
-            if self.p1points == 3:
-                P1res = FORTY
-
-
             P2res = LOVE
             result = P1res + "-" + P2res
         if self.p2points > 0 and self.p1points == 0:
             if self.p2points == 1:
-
                 P2res = FIFTEEN
             elif self.p2points == 2:
                 P2res = THIRTY
             elif self.p2points == 3:
                 P2res = FORTY
-
-                P2res = FIFTEEN
-            if self.p2points == 2:
-                P2res = THIRTY
-            if self.p2points == 3:
-                P2res = FORTY
-
-
             P1res = LOVE
             result = P1res + "-" + P2res
 
         if self.p1points > self.p2points and self.p1points < 4:
             if self.p1points == 2:
-
                 P1res = THIRTY
             elif self.p1points == 3:
                 P1res = FORTY
@@ -142,26 +123,7 @@ class TennisGame2:
             if self.p1points == 1:
                 P1res = FIFTEEN
             elif self.p1points == 2:
-                
-
                 P1res = THIRTY
-            if self.p1points == 3:
-                P1res = FORTY
-            if self.p2points == 1:
-                P2res = FIFTEEN
-            if self.p2points == 2:
-                P2res = THIRTY
-            result = P1res + "-" + P2res
-        if self.p2points > self.p1points and self.p2points < 4:
-            if self.p2points == 2:
-                P2res = THIRTY
-            if self.p2points == 3:
-                P2res = FORTY
-            if self.p1points == 1:
-                P1res = FIFTEEN
-            if self.p1points == 2:
-                P1res = THIRTY
-
             result = P1res + "-" + P2res
 
         if self.p1points > self.p2points and self.p2points >= 3:
