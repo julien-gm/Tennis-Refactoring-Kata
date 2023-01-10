@@ -142,7 +142,7 @@ class TennisGame2:
             if self.p1points == 1:
                 P1res = FIFTEEN
             elif self.p1points == 2:
-                P1res = THIRTY
+                
 
                 P1res = THIRTY
             if self.p1points == 3:
