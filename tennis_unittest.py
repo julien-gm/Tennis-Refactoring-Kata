@@ -4,6 +4,7 @@ import unittest
 
 from tennis import TennisGame1, TennisGame2, TennisGame3
 
+
 test_cases = [
     (0, 0, "Love-All", "player1", "player2"),
     (1, 1, "Fifteen-All", "player1", "player2"),
@@ -73,6 +74,24 @@ class TestTennis(unittest.TestCase):
             (p1Points, p2Points, score, p1Name, p2Name) = testcase
             game = play_game(TennisGame3, p1Points, p2Points, p1Name, p2Name)
             self.assertEqual(score, game.score())
+
+    def test_player_game1(self):
+        game = TennisGame1("Player 1", "Player 2")
+        game.won_point("Player 3")
+        self.assertEqual(0, game.p1points)
+        self.assertEqual(0, game.p2points)
+
+    def test_player_game2(self):
+        game = TennisGame2("Player 1", "Player 2")
+        game.won_point("Player 3")
+        self.assertEqual(0, game.p1points)
+        self.assertEqual(0, game.p2points)
+
+    def test_player_game3(self):
+        game = TennisGame3("Player 1", "Player 2")
+        game.won_point("Player 3")
+        self.assertEqual(0, game.p1)
+        self.assertEqual(0, game.p2)
 
 
 if __name__ == "__main__":
