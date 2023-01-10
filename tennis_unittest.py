@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import unittest
 
 from tennis import TennisGame1, TennisGame2, TennisGame3
@@ -78,20 +77,20 @@ class TestTennis(unittest.TestCase):
     def test_player_game1(self):
         game = TennisGame1("Player 1", "Player 2")
         game.won_point("Player 3")
-        self.assertEqual(0, game.p1points)
-        self.assertEqual(0, game.p2points)
+        self.assertEqual(0, game.player1.points)
+        self.assertEqual(0, game.player2.points)
 
     def test_player_game2(self):
         game = TennisGame2("Player 1", "Player 2")
         game.won_point("Player 3")
-        self.assertEqual(0, game.p1points)
-        self.assertEqual(0, game.p2points)
+        self.assertEqual(0, game.p1.points)
+        self.assertEqual(0, game.p2.points)
 
     def test_player_game3(self):
         game = TennisGame3("Player 1", "Player 2")
         game.won_point("Player 3")
-        self.assertEqual(0, game.p1)
-        self.assertEqual(0, game.p2)
+        self.assertEqual(0, game.p1.points)
+        self.assertEqual(0, game.p2.points)
 
 
 if __name__ == "__main__":
