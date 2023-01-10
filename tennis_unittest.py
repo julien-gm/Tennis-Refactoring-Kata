@@ -90,8 +90,8 @@ class TestTennis(unittest.TestCase):
     def test_player_game3(self):
         game = TennisGame3("Player 1", "Player 2")
         game.won_point("Player 3")
-        self.assertEqual(0, game.p1)
-        self.assertEqual(0, game.p2)
+        self.assertEqual(0, game.score_player_1)
+        self.assertEqual(0, game.score_player_2)
 
 
 if __name__ == "__main__":
