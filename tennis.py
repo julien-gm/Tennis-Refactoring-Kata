@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 class TennisGame1:
     def __init__(self, player1Name, player2Name):
         self.player1Name = player1Name
@@ -11,7 +10,8 @@ class TennisGame1:
     def won_point(self, playerName):
         if playerName == self.player1Name:
             self.p1points += 1
-        else:
+
+        elif playerName == self.player2Name:
             self.p2points += 1
 
     def score(self):
@@ -58,9 +58,9 @@ class TennisGame2:
 
     def won_point(self, playerName):
         if playerName == self.player1Name:
-            self.P1Score()
-        else:
-            self.P2Score()
+            self.p1points += 1
+        elif playerName == self.player2Name:
+            self.p2points += 1
 
     def score(self):
         result = ""
@@ -139,20 +139,6 @@ class TennisGame2:
             result = "Win for " + self.player2Name
         return result
 
-    def SetP1Score(self, number):
-        for i in range(number):
-            self.P1Score()
-
-    def SetP2Score(self, number):
-        for i in range(number):
-            self.P2Score()
-
-    def P1Score(self):
-        self.p1points += 1
-
-    def P2Score(self):
-        self.p2points += 1
-
 
 class TennisGame3:
     def __init__(self, player1_name, player2_name):
@@ -164,7 +150,8 @@ class TennisGame3:
     def won_point(self, number):
         if number == self.p1N:
             self.p1 += 1
-        else:
+        elif n == self.p2N:
+
             self.p2 += 1
 
     def score(self):
