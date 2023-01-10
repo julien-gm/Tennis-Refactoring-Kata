@@ -102,7 +102,6 @@ class TennisGame2:
                 P2res = THIRTY
             elif self.p2.points == 3:
                 P2res = FORTY
-
             P1res = LOVE
             result = P1res + "-" + P2res
 
@@ -125,7 +124,6 @@ class TennisGame2:
                 P1res = FIFTEEN
             elif self.p1.points == 2:
                 P1res = THIRTY
-
             result = P1res + "-" + P2res
 
         if self.p1.points > self.p2.points and self.p2.points >= 3:
@@ -150,41 +148,37 @@ class TennisGame2:
 
 
 class TennisGame3:
-    def __init__(self, player1, player2):
-        self.p1 = Player(player1)
-        self.p2 = Player(player2)
+    def __init__(self, player1_name, player2_name):
+        self.p1 = Player(player1_name)
+        self.p2 = Player(player2_name)
 
-    def won_point(self, n):
-        if n == self.p1.name:
+    def won_point(self, name):
+        if name == self.p1.name:
             self.p1.points += 1
-        elif n == self.p2.name:
+        elif name == self.p2.name:
             self.p2.points += 1
 
     def score(self):
         if (self.p1.points < 4 and self.p2.points < 4) and (
             self.p1.points + self.p2.points < 6
         ):
-            p = [LOVE, FIFTEEN, THIRTY, FORTY]
-            s = p[self.p1.points]
+            points = [LOVE, FIFTEEN, THIRTY, FORTY]
+            player1_points = points[self.p1.points]
             return (
-                s + ALL
+                player1_points + ALL
                 if (self.p1.points == self.p2.points)
-                else s + "-" + p[self.p2.points]
+                else player1_points + "-" + points[self.p2.points]
             )
         else:
             if self.p1.points == self.p2.points:
                 return DEUCE
-            s = (
+            advantage_player = (
                 self.p1.name
                 if self.p1.points > self.p2.points
                 else self.p2.name
             )
             return (
-                ADVANTAGE + s
-                if (
-                    (self.p1.points - self.p2.points)
-                    * (self.p1.points - self.p2.points)
-                    == 1
-                )
-                else WIN + s
+                WIN + advantage_player
+                if abs(self.p1.points - self.p2.points) > 1
+                else ADVANTAGE + advantage_player
             )
